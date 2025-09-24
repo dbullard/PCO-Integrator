@@ -2,7 +2,6 @@
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-PYTHON_CMD=""
 
 if command -v python3 >/dev/null 2>&1; then
   PYTHON_CMD="python3"
@@ -25,8 +24,7 @@ if [ ! -d "$VENV_DIR" ]; then
 fi
 
 VENV_PY="$VENV_DIR/bin/python"
-set +e
-TCL_INFO="$($VENV_PY - <<'PY'
+if TCL_INFO="$($VENV_PY - <<'PY'
 import os
 import sys
 try:
@@ -38,26 +36,18 @@ base = os.path.dirname(os.path.dirname(os.path.realpath(tkinter.__file__)))
 print(os.path.join(base, 'tcl8.6'))
 print(os.path.join(base, 'tk8.6'))
 PY
-)"
-STATUS=$?
-set -e
-if [ $STATUS -ne 0 ]; then
-  echo "Could not locate Tcl/Tk runtime from the active Python installation."
-  echo "Reinstall Python and ensure the \"tcl/tk and IDLE\" option is selected."
-  read -r -p "Press Enter to exit..." _
-  exit 1
+)"; then
+  TCL_DIR="$(printf '%s' "$TCL_INFO" | sed -n '1p')"
+  TK_DIR="$(printf '%s' "$TCL_INFO" | sed -n '2p')"
+  if [ -f "$TCL_DIR/init.tcl" ] && [ -d "$TK_DIR" ]; then
+    export TCL_LIBRARY="$TCL_DIR"
+    export TK_LIBRARY="$TK_DIR"
+  else
+    echo "Warning: Tcl/Tk runtime path could not be verified. Continuing without overrides."
+  fi
+else
+  echo "Warning: Unable to confirm Tcl/Tk installation. Continuing without overrides."
 fi
-
-TCL_DIR="$(printf '%s' "$TCL_INFO" | sed -n '1p')"
-TK_DIR="$(printf '%s' "$TCL_INFO" | sed -n '2p')"
-if [ ! -f "$TCL_DIR/init.tcl" ] || [ ! -d "$TK_DIR" ]; then
-  echo "Tcl/Tk runtime was not found in the base Python installation."
-  echo "Reinstall Python and ensure the \"tcl/tk and IDLE\" option is selected."
-  read -r -p "Press Enter to exit..." _
-  exit 1
-fi
-export TCL_LIBRARY="$TCL_DIR"
-export TK_LIBRARY="$TK_DIR"
 
 "$VENV_PY" -m pip install --upgrade pip
 "$VENV_PY" -m pip install -r "$SCRIPT_DIR/requirements.txt"
