@@ -167,6 +167,40 @@ ttkbootstrap>=1.10
 
 ---
 
+## 🔑 Getting Your Planning Center App ID and Secret
+
+To use this app, you need a Planning Center Personal Access Token (PAT) which provides the App ID and Secret.
+
+Log in to Planning Center Online
+Go to https://api.planningcenteronline.com/
+ with your Planning Center account.
+
+Create a Personal Access Token
+
+Click “Create Personal Access Token”.
+
+Give it a name (e.g., DiGiCo Snapshot Builder).
+
+(Optional) Add a description for clarity.
+
+Save.
+
+Copy your App ID and Secret
+
+After creating the PAT, Planning Center will show you an App ID and a Secret.
+
+Copy both values.
+
+Store them somewhere safe. (You can re-generate if lost, but the Secret won’t be shown again after you leave the page.)
+
+Enter in the App
+
+In the GUI, paste App ID and Secret into the corresponding fields.
+
+Click Test PCO to confirm connection.
+
+⚠️ Important: The Secret is like a password. Keep it private. The app saves credentials locally in config.json (plain text) for convenience. If sharing your repo, be sure .gitignore excludes config.json.
+
 ## 🤝 Contributing
 
 - PRs welcome: styling tweaks, more themes, additional time-zone options, improved error messages.
@@ -176,4 +210,4 @@ ttkbootstrap>=1.10
 
 ## 📝 License
 
-MIT (or your preferred license—update this section accordingly).
+MIT
