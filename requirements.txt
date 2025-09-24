@@ -1,3 +1,4 @@
 requests>=2.28
 python-osc>=1.8
 ttkbootstrap>=1.10
+tzdata>=2025.2
