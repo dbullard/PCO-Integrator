@@ -151,6 +151,11 @@ A `config.json` is created/updated alongside the script:
 - **PCO authentication fails**  
   - Recheck App ID/Secret  
   - Try **Test PCO** and see the log for details
+ 
+- **Mac will not open launch-mac.command**
+  - Open Settings App and go to Privacy & Security
+  - Scroll to the bottom and there should be an option to Open Anyways for the script.
+  - Since this isn't a verified app, Mac will not open without extra permissions. It's not a virus. I promise. 
 
 ---
 
