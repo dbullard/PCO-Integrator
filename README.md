@@ -20,6 +20,7 @@ No grandMA3 integration—this app only targets DiGiCo.
 ## 🧰 Requirements
 
 - **Python**: 3.9+ (tested with 3.10–3.13)
+- **Python IDE application**
 - **Dependencies**:
   ```bash
   pip install requests python-osc ttkbootstrap
