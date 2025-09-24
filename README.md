@@ -61,7 +61,13 @@ No grandMA3 integration—this app only targets DiGiCo.
    - If your show **already has snapshots**, toggle **“Show already has snapshots”** and enter how many (this becomes the index offset)
    - Click **Preview Snapshots** to see the names and **0-based** DiGiCo indices
 
-6. **Send to DiGiCo**
+6. **Setup the External Control on the DiGiCo**
+   - Go to External Control options under the Setup tab on the console
+   - Select Add Device and add the DiGiCo Pad options (making sure to load the iPad commands allowed at the bottom of the window).
+   - Input the IP Address of the computer running the script and assign it a receive and send port. You will use the receive port with this script.
+   - Make sure to enable the control by having a green check mark.
+
+8. **Send to DiGiCo**
    - Enter **DiGiCo IP/Host** and **OSC Port**
    - Click **Send to DiGiCo** (you’ll be asked to confirm)
 
