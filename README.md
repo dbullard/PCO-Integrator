@@ -1,8 +1,7 @@
 # PCO → DiGiCo Snapshot Builder (GUI)
 
 A lightweight Python GUI that pulls **Planning Center Online (PCO)** plans and builds **DiGiCo** snapshots over **OSC**.  
-Dark-mode UI, preview-before-send, and 0-based snapshot indexing with optional offset for existing shows.  
-No grandMA3 integration—this app only targets DiGiCo.
+Dark-mode UI, preview-before-send, and 0-based snapshot indexing with optional offset for existing shows.
 
 ---
 
